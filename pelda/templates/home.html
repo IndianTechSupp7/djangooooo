@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block tartalom %}
+<h1>Üdvözlünk {{user.username}}💋💕</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" name="logout" class="btn btn-secondary m-3">Kijelentkezés</button>
+</form>
+<form method="POST">
+    {% csrf_token %}
+    <div class="input-group mb-3">
+        <input type="text" name="a" class="form-control" placeholder="szélesség" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <input type="text" name="b" class="form-control" placeholder="hosszúság" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <button class="btn btn-outline-secondary" type="submit" name="szamolas" id="button-addon1">Számolás</button>
+        {% if result %}
+        <span class="input-group-text">{{result}}</span>
+        {% endif %}
+    </div>
+</form>
+{% for d in data %}
+<h3>{{d}}</h3>
+{% endfor %}
+{% endblock tartalom %}
